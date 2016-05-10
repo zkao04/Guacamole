@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Guacamole</title>
+    <style media="screen">
+      .container {
+        width: 672px;
+        height: 672px;
+        border: 20px solid black;
+        background: green;
+        cursor: url("Mallet-128.png"), auto;
+      }
+      .hole {
+        width: 198px;
+        height: 198px;
+        border:13px solid #372605;
+        border-radius: 50%;
+        float: left;
+        background: #694605;
+      }
+      .hole:active {
+        background: yellow;
+      }
+      img {
+         margin-left: -14px;
+         height: 100%
+      }
+    </style>
+  </head>
+  <body>
+    <h2 id="scoreBoard"></h2>
+
+    <div class="container">
+      <div class="hole"></div>
+      <div class="hole"></div>
+      <div class="hole"></div>
+      <div class="hole"></div>
+      <div class="hole"></div>
+      <div class="hole"></div>
+      <div class="hole"></div>
+      <div class="hole"></div>
+      <div class="hole"></div>
+    </div>
+
+    <script type="text/javascript">
+      var holes = document.querySelectorAll('.hole');
+      var numberOfHoles = holes.length;
+      var scoreBoard = document.querySelector('#scoreBoard');
+      var score = 0;
+
+      function pickRandom(upTo){
+        return Math.floor( Math.random() * upTo );
+        return Math.floor( Math.random() * upto );
+      }
+
+
+      holes[pickRandom(numberOfHoles)].innerHTML = "<img src='mole.png'/>";
+
+      // firstHole.addEventListener('click', function(){
+      //   console.log(this);
+      //   console.log(this === firstHole);
+      //   this.innerHTML = "<img src='mole.png'/>"
+      // });
+      for (var i = 0; i < holes.length; i++) {
+        holes[i].addEventListener('click', function(){
+          console.log(this);
+          console.log(this.innerHTML);
+          if(this.innerHTML !== ""){
+            console.log("There is something inside of me");
+            score = score + 1;
+            scoreBoard.innerHTML = score + " guacs"
+            this.innerHTML = ""
+          holes[pickRandom(numberOfHoles)].innerHTML = "<img src='mole.png'/>";
+          }
+
+
+
+          // console.log(this === holes);
+          // this.innerHTML = "<img src='mole.png'/>"
+        });
+      }
+
+    </script>
+  </body>
+</html>
